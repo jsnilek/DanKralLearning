@@ -1,11 +1,11 @@
 import "./App.css";
-import { TodoList } from "./TodoList";
+import { ShoppingList } from "./ShoppingList";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header"></header>
-      <TodoList />
+      <ShoppingList />
     </div>
   );
 }

@@ -3,17 +3,18 @@ import Button from "@mui/material/Button";
 
 export function SendText({ sendText }) {
   const defaultText = "text...";
-  const [text, setText] = useState(defaultText);
+  const [nodeText, setNodeText] = useState(defaultText);
 
-  const onChange = (event) => setText(event.target.value);
+  const onChange = (event) => setNodeText(event.target.value);
   const onClick = () => {
-    sendText(text);
-    setText(defaultText);
+    const node = { text: nodeText, done: false };
+    sendText(node);
+    setNodeText(defaultText);
   };
 
   return (
     <>
-      <input value={text} onChange={onChange} />
+      <input value={nodeText} onChange={onChange} />
       <Button onClick={onClick}>Send</Button>
     </>
   );

@@ -3,22 +3,20 @@ import Button from "@mui/material/Button";
 import { TextEdit } from "./TextEdit";
 import { HeartBox } from "./HeartBox";
 
-export function Node({ text, deleteNode, edit }) {
+export function Node({ node, deleteNode, changeNode, setNodeDone }) {
   const [editable, setEditable] = useState(false);
-  const [nodeText, setNodeText] = useState(text);
   return (
     <>
       <div>
-        <HeartBox />
+        <HeartBox done={node.done} setDone={setNodeDone} />
         <TextEdit
-          text={nodeText}
+          text={node.text}
           isEditable={editable}
-          textEdited={setNodeText}
+          textEdited={changeNode}
         />
         <Button
           onClick={() => {
             setEditable(!editable);
-            edit(nodeText);
           }}
         >
           Edit

@@ -1,12 +1,10 @@
 import React from "react";
-import { useState } from "react";
 
-export function HeartBox() {
-  const [done, setDone] = useState(false);
+export function HeartBox({ done, setDone }) {
   return (
     <>
-      <span onClick={() => setDone(!done)} style={{ color: done ? "red" : "" }}>
-        ❤
+      <span onClick={setDone} style={{ color: done ? "red" : "" }}>
+        ❤{" "}
       </span>
     </>
   );

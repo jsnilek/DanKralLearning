@@ -5,15 +5,25 @@ import { Node } from "./Node";
 export function ShoppingList() {
   const [nodes, setNodes] = useState([]);
 
-  const onMessageSent = (text) => {
-    const newTodo = [text, ...nodes];
+  const onMessageSent = (node) => {
+    const newTodo = [node, ...nodes];
     setNodes(newTodo);
   };
 
-  const onMessageChange = (text) => {
-    console.log(text);
-    //const newTodo = (nodes[index] = text);
-    //setNodes(newTodo);
+  const onMessageChange = (index, nodeText) => {
+    const newTodo = [...nodes];
+    const node = newTodo[index];
+    node.text = nodeText;
+    newTodo[index] = node;
+    setNodes(newTodo);
+  };
+
+  const onDoneClick = (index) => () => {
+    const newTodo = [...nodes];
+    const node = newTodo[index];
+    node.done = !node.done;
+    newTodo[index] = node;
+    setNodes(newTodo);
   };
 
   const onMessageDelete = (nodeIndex) => () => {
@@ -24,19 +34,23 @@ export function ShoppingList() {
   return (
     <>
       <SendText sendText={onMessageSent} />
-
       {nodes.map((node, index) => {
         return (
           <Node
             key={index}
-            text={node}
+            node={node}
             deleteNode={onMessageDelete(index)}
-            edit={onMessageChange}
+            changeNode={(text) => onMessageChange(index, text)}
+            setNodeDone={onDoneClick(index)}
           />
         );
       })}
       <footer>
-        Completed {nodes.length}/{nodes.length} tasks.
+        Completed{" "}
+        {nodes.reduce((acc, cur) => {
+          return acc + cur.done;
+        }, 0)}
+        /{nodes.length} tasks.
         <br /> Good job. Go play some Elden Ring!
       </footer>
     </>

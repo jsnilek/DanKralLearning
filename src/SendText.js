@@ -14,8 +14,10 @@ export function SendText({ sendText }) {
 
   return (
     <>
-      <input value={nodeText} onChange={onChange} />
-      <Button onClick={onClick}>Send</Button>
+      <div className="SendText">
+        <input value={nodeText} onChange={onChange} />
+        <Button onClick={onClick}>Send</Button>
+      </div>
     </>
   );
 }

@@ -1,5 +1,39 @@
-.node {
-  flex: 2;
+footer {
+  text-align-all: center;
 }
-.span {
+
+.NodeBox {
+  display: flex;
+  padding: 0 10px 0 10px;
+}
+
+div {
+  border: 1px #ccc solid;
+}
+.App {
+  text-align: center;
+  align-items: center;
+  width: 600px;
+}
+
+.Button-delete {
+  justify-content: flex-end;
+}
+
+.SendText {
+  float: inside;
+}
+
+.TextEdit {
+  flex: 1;
+  /*align-items: stretch;*/
+  text-align: left;
+  /*padding: 0 10px 0 10px;*/
+}
+
+.TextEdit input {
+  width: 100%;
+  height: auto;
+  flex-grow: 1;
+  border: 0;
 }
